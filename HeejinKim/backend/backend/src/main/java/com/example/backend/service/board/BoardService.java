@@ -1,6 +1,7 @@
 package com.example.backend.service.board;
 
 import com.example.backend.entity.Board;
+import com.example.backend.entity.Reservation;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,4 +15,7 @@ public interface BoardService {
     public void modify (Board board, @RequestParam(required = false) MultipartFile file) throws Exception;
     public void remove (Integer boardNo) ;
     public List<Board> searchList(String keyWord);
+    public List<Board> searchIdList(String searchId);
+
+
 }

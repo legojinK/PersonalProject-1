@@ -30,7 +30,7 @@ public class BoardComments {
     private String comment;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="board_no")
     private Board board;
 
@@ -43,11 +43,15 @@ public class BoardComments {
     @UpdateTimestamp
     private Date updDate;
 
+
+    /*
     public BoardComments(Long commentNo, String comment, Date regDate) {
 
         this.comment = comment;
         this.commentNo = commentNo;
 
     }
+
+     */
 
 }

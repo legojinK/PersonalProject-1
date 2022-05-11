@@ -124,4 +124,11 @@ public class BoardServiceImpl implements BoardService{
 
         return findSearchList;
     }
+
+    @Transactional
+    @Override
+    public List<Board> searchIdList(String searchId) {
+        return repository.findIdList(searchId);
+
+    }
 }

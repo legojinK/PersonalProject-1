@@ -40,14 +40,18 @@ public class BoardCommentsServiceImpl implements BoardCommentsService {
         commentRepository.save(comment);
     }
 
-
     @Transactional
     @Override
     public List<BoardComments> list(Integer boardNo) {
-        List<BoardComments> commentLists = commentRepository.findAllBoardCommentByBoardId(Long.valueOf(boardNo));
 
-        return commentLists;
+        //List<BoardComments> commentLists = commentRepository.findAllBoardCommentByBoardId(Long.valueOf(boardNo));
+        //return commentLists;
+
+        Board board = boardRepository.findById(Long.valueOf(boardNo)).get();
+
+        return commentRepository.findBoardCommentByBoard(board);
     }
+
 
 
     @Transactional
@@ -70,12 +74,11 @@ public class BoardCommentsServiceImpl implements BoardCommentsService {
     }
 
 
-    @Transactional
+
     @Override
     public void remove(Integer commentNo) {
         commentRepository.deleteById(Long.valueOf(commentNo));
 
     }
-
 
 }

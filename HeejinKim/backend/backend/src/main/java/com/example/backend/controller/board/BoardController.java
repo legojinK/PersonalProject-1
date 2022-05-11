@@ -3,6 +3,7 @@ package com.example.backend.controller.board;
 
 import com.example.backend.controller.board.request.KeyWordRequest;
 import com.example.backend.entity.Board;
+import com.example.backend.entity.Reservation;
 import com.example.backend.service.board.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,15 @@ public class BoardController {
         String key = keyWord.getKeyWord();
 
         return service.searchList(key);
+    }
+
+    //마이페이지에서 내가 쓴 게시판 글 불러오기
+    @GetMapping("/list/{searchId}")
+    public List<Board> boardPerList (@PathVariable("searchId") String searchId) {
+        log.info("boardPerList()");
+
+
+        return service.searchIdList(searchId);
     }
 }
 

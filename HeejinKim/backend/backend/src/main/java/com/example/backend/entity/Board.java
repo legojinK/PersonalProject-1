@@ -1,14 +1,10 @@
 package com.example.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,17 +39,15 @@ public class Board {
     @UpdateTimestamp
     private Date updDate;
 
-
-
-
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
+    @OneToMany(mappedBy = "board",fetch = FetchType.EAGER,orphanRemoval = true)
     private List<BoardComments> comments = new ArrayList<>();
 
+    /*
     public Board(String fileName) {
-
-
         this.fileName = fileName;
     }
+
+     */
 
 }
 

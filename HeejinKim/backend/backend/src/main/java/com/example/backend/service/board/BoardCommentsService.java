@@ -10,6 +10,6 @@ public interface BoardCommentsService {
     public void register (Integer boardNo, CommentRequest commentRequest);
     public List<BoardComments> list (Integer boardNo);
     public BoardComments modify (Integer commentNo, CommentRequest commentsRequest);
-    public void remove (Integer boardNo);
+    public void remove (Integer commentNo);
 
 }

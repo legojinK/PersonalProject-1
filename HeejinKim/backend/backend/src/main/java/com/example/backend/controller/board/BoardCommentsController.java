@@ -22,7 +22,7 @@ public class BoardCommentsController {
 
     @PostMapping("/register/{boardNo}")
     public void boardCommentsRegister ( @PathVariable("boardNo") Integer boardNo,
-                                            @Validated @RequestBody CommentRequest commentRequest) {
+                                        @Validated @RequestBody CommentRequest commentRequest) {
 
         log.info("boardCommentsRegister()" + commentRequest);
 
@@ -38,7 +38,8 @@ public class BoardCommentsController {
     }
 
 
-    @PutMapping("/{commentNo}")
+    //댓글 수정
+   @PutMapping("/{commentNo}")
     public BoardComments boardCommentsModify (
             @PathVariable("commentNo") Integer commentNo,
             @Validated @RequestBody CommentRequest commentRequest) {
@@ -53,11 +54,12 @@ public class BoardCommentsController {
 
     @DeleteMapping("/{commentNo}")
     public void boardCommentsRemove (
-            @PathVariable("commentNo") Integer commentNo) {
+            @PathVariable("commentNo") Integer commentNo,BoardComments boardComments) {
         log.info("commentRemove()");
 
         service.remove(commentNo);
     }
+
 }
 
 
