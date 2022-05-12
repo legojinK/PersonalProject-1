@@ -9,7 +9,7 @@
                         style="white-space:pre-line" v-model="comment"/>
                     </v-col>
                     
-                    <v-btn  type="submit" class="commentBtn" dark>register</v-btn>
+                    <v-btn  type="submit" class="commentBtn" text><v-icon class="deleteIcon" color="rgba(214, 86, 103, 0.596)"> mdi-arrow-right </v-icon></v-btn>
                     
                 </v-row>
 
@@ -27,9 +27,9 @@
                         </v-col>
                         
                     <template v-if="comments.commentWriter == commentWriter">
-                                <v-btn class="comRemoveBtn" @click=comRemove(comments.comNo) small >
+                                <v-btn class="comRemoveBtn" @click=comRemove(comments.comNo) small text >
                                 <v-icon>
-                                    mdi-delete
+                                   mdi-trash-can-outline
                                 </v-icon>
                             </v-btn>
                     </template>
@@ -84,9 +84,9 @@ export default {
         },
         comRemove (comNo) {
             
-            axios.delete(`http://localhost:7777/serviceComments/${comNo}`, {comNo})
+            axios.delete(`http://localhost:7777/centerComments/${comNo}`)
                     .then(() => {
-                        alert('댓글 삭제.')
+                         alert("Done! Deleted successfully");
                         this.$router.push('/serviceBoard')
                     })
                     .catch(() => {

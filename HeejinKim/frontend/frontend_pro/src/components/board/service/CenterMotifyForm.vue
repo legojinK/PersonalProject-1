@@ -29,7 +29,7 @@
                         </v-col>
 
                         <v-col cols="12">
-                        <v-img :src="image" alt=""/>
+                        <v-img :src="image"  class="addImg"  alt=""/>
                         </v-col>
                     </v-row>
 
@@ -37,7 +37,7 @@
                      <v-row wrap>
                             <router-link :to="{ name: 'CenterRead',
                                 params: { centerNo: center.centerNo.toString() } }" style=" text-decoration:none"><v-btn color="grey" dark >cancle</v-btn></router-link>
-                        <v-btn type="submit" color="black" dark>Modify</v-btn>
+                        <v-btn type="submit" color="black" dark class="submitBtn">Modify</v-btn>
                     </v-row>
                 </table>
             </v-form>
@@ -111,8 +111,19 @@ table{
     margin-left:3%;
     
 }
+.addImg {
+    position: relative;
+    margin-left: auto;
+    margin-right:auto;
+    max-width: 400px;
+    max-height: 600px;
+}
    
 .v-text-field, .v-textarea, #files{
     font-family: 'Noto Sans KR', sans-serif;
 }
+.submitBtn{
+margin-left:230px;
+}
+   
 </style>

@@ -37,17 +37,19 @@
             </v-row>
             
             <v-row>
-                <v-btn @click="backPage" class="backBtn" dark> Back</v-btn>
-            </v-row>
+                <v-btn @click="backPage" class="backBtn" text>  
+                     <v-icon class="listIcon" justify="center"> mdi-keyboard-backspace</v-icon>
+                    </v-btn>
+            
 
-            <v-row v-if="center.writer == this.userId">  
+            <span v-if="center.writer == this.userId">  
     
                 <router-link :to="{name:'CenterModify', params:{centerNo: center.centerNo.toString()}}" style="text-decoration:none">
                     <v-btn class="modifyBtn">Modify</v-btn>
                 </router-link>
         
-                <v-btn @click=onDelete dark>Delete</v-btn>
-
+                <v-btn @click=onDelete class="deleteBtn"  text><v-icon class="deleteIcon" color="red"> mdi-trash-can-outline </v-icon></v-btn>
+            </span>
             </v-row>
 
         </table>
@@ -89,7 +91,7 @@ export default {
             
             axios.delete(`http://localhost:7777/board/center/${centerNo}`, {fileName})
                     .then(() => {
-                        alert('게시글 삭제')
+                        alert("Done! Deleted successfully");
                         this.$router.push({ name: 'CenterList' })
                     })
                     .catch(() => {
@@ -116,15 +118,21 @@ table{
     margin-right:auto;
 }
 .modifyBtn{
-    color:rgba(214, 86, 103, 0.596);  
+
+     color:rgba(214, 86, 103, 0.596); 
+      margin-left:210px; 
 }
 .v-text-field, .v-textarea{
     font-family: 'Sunflower', sans-serif;
 }
 .addImg {
-    position: relative;
+   position: relative;
     max-height: 400px;
     max-width: 500px;
+    margin-bottom:20px;
+}
+.deleteBtn{
+    margin-left:200px;
 }
 </style>
     

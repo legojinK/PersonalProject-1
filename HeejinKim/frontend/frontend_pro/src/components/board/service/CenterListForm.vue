@@ -3,7 +3,7 @@
     
     <v-card-title>
 
-      <h2>Community</h2>
+      <h2>Service Center</h2>
 
       <v-spacer></v-spacer>
 
@@ -13,14 +13,15 @@
         label="Search"
         single-line
         hide-details
-        class="shrink pr-15">
+        class="shrink pr-15"
+        color="#e3c832">
       </v-text-field>
       
 
      
 
     </v-card-title>
-
+    
     <v-data-table 
       @click:row="showBoard"
       :headers="headers"
@@ -31,7 +32,18 @@
       class="table"
       hide-default-footer
       @page-count="pageCount = $event"
-    ></v-data-table>
+    >
+    <template v-slot:[`item.title`]="{ item }">
+    <v-icon color="grey" size="15px"> mdi-lock-outline</v-icon>&nbsp;&nbsp; {{ item.title }} <span style="color:#D50000;"> [{{ item.comments.length }}] </span>
+    </template>
+    
+    
+    
+    
+    
+    
+    
+    </v-data-table>
 
     <div class="text-center pt-2">
       <v-pagination class="grey lighten-4"
@@ -62,6 +74,7 @@ export default {
       page: 1,
       pageCount: 0,
       itemsPerPage: 9,
+      checkId : this.$store.state.session.userId,
       
       headers: [
         {text:'글 번호', align: 'center', value: 'centerNo', width:'10%'}, 
@@ -71,27 +84,28 @@ export default {
       ],
     }
   },
+   created() {
+    if (this.$store.state.session != null) {
+      this.loginAuth = this.$store.state.auth.auth
+    } else {
+      alert("please login");
+      this.$router.push("/Home");
+    }
+  },
   methods: {
     showBoard(event, idx) {
-      console.log("글 번호: " + idx.item.centerNo)
-      this.$router.push({name: 'CenterRead', params: {centerNo: String(idx.item.centerNo)}})
+      if(idx.item.writer == this.checkId || this.loginAuth == 'Manager'){
+          this.$router.push({ name: 'CenterRead',  params: { centerNo:String(idx.item.centerNo) } })
+      }
+      else {
+        alert('You cannot read this content')
+      this.$router.push('/serviceBoard') 
+      }
+    }
+    
     },
-    /*
-    @click="keySearch"
-    keySearch(){
-      const {keyWord} = this
-      console.log(keyWord)
-      axios.post('http://localhost:7777/board/community/search', {keyWord})
-      .then((res) => {
-          console.log(res.data)
-          this.$router.push({name: 'CommunityBoardSearchPage', params: { searchList: res.data }})
-      })
-      .catch (() => {
-          alert('문제 발생!')
-      })
-            }*/
   }
-}
+
 </script>
 
 <style scoped>
@@ -101,13 +115,13 @@ export default {
 
 .table{
   cursor: pointer;
+  font-family: 'Ubuntu', sans-serif;
 
 }
 
 .cardStyle{
 
-  font-family: 'Poiret One', cursive;
-  font-weight: bold;
+ font-family: 'Ubuntu',  sans-serif;
   margin: 30px;
   width:90%;
 }

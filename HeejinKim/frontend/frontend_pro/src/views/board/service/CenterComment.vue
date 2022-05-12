@@ -47,7 +47,7 @@ export default {
             const centerNo = this.centerNo
             axios.post(`http://localhost:7777/centerComments/register/${centerNo}`, { commentWriter, comment })
                     .then(() => {
-                        alert('댓글 등록')
+                      alert("Successfully submitted")
                         this.$router.push('/serviceBoard')
                     })
                     .catch(() => {

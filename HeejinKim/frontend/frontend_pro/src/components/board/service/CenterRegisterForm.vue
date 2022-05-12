@@ -5,7 +5,7 @@
                 <v-row justify="center">
                     <v-col cols="1" class="label mt-5 ml-4" >Title</v-col>
                     <v-col>
-                        <v-text-field  type="text" v-model="title"/>
+                        <v-text-field color="#e3c832" type="text" v-model="title"/>
                     </v-col>
                 </v-row>
                 
@@ -29,12 +29,13 @@
                     </v-col>
 
                     <v-col cols="12">
-                    <v-img :src="image" alt=""/>
+                    <v-img :src="image" class="preview" alt=""/>
                     </v-col>
                 </v-row>
 
                 <v-row wrap>
-                    <v-btn @click="cancel" class="cancleBtn" color="grey" dark>cancle</v-btn>
+                    <v-btn @click="cancel" class="cancleBtn" text >
+                        <v-icon class="listIcon" justify="center"> mdi-keyboard-backspace</v-icon></v-btn>
                     <v-btn type="submit" class="writeBtn" color="black" dark>submit</v-btn>
                 </v-row>
             </table>
@@ -100,13 +101,21 @@ table{
     margin-right:auto;
       
 }
+.preview {
+    position: relative;
+    margin-left: auto;
+    margin-right:auto;
+    max-width: 400px;
+    max-height: 600px;
+}
    
 .cancleBtn {
     position: relative;
     margin-top:1%;   
 }
 .writeBtn {
-     margin-top:1%;      
+     margin-top:1%;
+     margin-left:33%;      
 }
 .imageDeleteBtn{
     zoom:0.8;

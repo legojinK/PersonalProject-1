@@ -40,7 +40,7 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }})
                     .then(res => {
-                        alert('게시물 수정 성공!')
+                       alert('Successfully submitted')
                         this.$router.push({
                             name: 'CenterRead',
                             params: { centerNo: res.data.centerNo.toString() }
