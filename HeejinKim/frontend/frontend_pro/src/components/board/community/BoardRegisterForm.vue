@@ -5,7 +5,7 @@
                 <v-row justify="center">
                     <v-col cols="1" class="label mt-5 ml-4" >Title</v-col>
                     <v-col>
-                        <v-text-field  type="text" v-model="title"/>
+                        <v-text-field color="#e3c832" type="text" v-model="title"/>
                     </v-col>
                 </v-row>
                 
@@ -28,13 +28,14 @@
                         <v-btn @click="fileDeleteButton()" class="imageDeleteBtn">delete Image</v-btn>
                     </v-col>
 
-                    <v-col cols="12">
-                    <v-img :src="image" alt=""/>
+                    <v-col cols="10">
+                    <v-img :src="image" class="preview" alt=""/>
                     </v-col>
                 </v-row>
 
                 <v-row wrap>
-                    <v-btn @click="cancel" class="cancleBtn" color="grey" dark>cancle</v-btn>
+                    <v-btn @click="cancel" class="cancleBtn" color="grey" text>
+                        <v-icon class="listIcon" justify="center"> mdi-keyboard-backspace</v-icon></v-btn>
                     <v-btn type="submit" class="writeBtn" color="black" dark>submit</v-btn>
                 </v-row>
             </table>
@@ -44,12 +45,10 @@
 
 <script>
 export default {
-
     name:'BoardRegisterForm',
     
     data() {
         return {
-
             title:'',
             content:'',
             files: '',
@@ -62,21 +61,16 @@ export default {
     },
     methods: {
         handleFileUpload () {
-
             console.log('add Image')
-
             var image = this.$refs['files'].files[0]
-
             const url = URL.createObjectURL(image)
             this.image = url
-
             this.files = this.$refs.files.files[0]
             
         },
         onSubmit () {
             const { title, content,writer } = this
             const file =  this.$refs.files.files[0]
-
             this.$emit('submit', { title, content,writer,file })
             console.log(title,content,writer,file)
         },
@@ -93,42 +87,38 @@ export default {
 </script>
 
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
-
-
-
 .label{
-
     font-size: 17pt;
     margin-right:5%;
     text-align: center;
     font-family: 'Poiret One', cursive;
 }
-
-
 table{ 
-
     background-color: #f3f3f3;;
     padding: 5% 10% 5% 10%;
     margin-left:auto;
     margin-right:auto;
       
 }
-   
-
+.preview {
+    position: relative;
+    margin-left: auto;
+    margin-right:auto;
+    max-width: 400px;
+    max-height: 600px;
+}
 .cancleBtn {
     position: relative;
     margin-top:1%;   
 }
 .writeBtn {
-     margin-top:1%;      
+     margin-top:1%; 
+      margin-left:33%;      
 }
 .imageDeleteBtn{
-
     zoom:0.8;
     margin-left:3%;
     
 }
-
 </style>

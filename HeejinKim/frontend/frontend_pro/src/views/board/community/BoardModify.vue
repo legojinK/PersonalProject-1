@@ -8,15 +8,11 @@
 
 <script>
 import axios from 'axios'
-
 import { mapActions, mapState } from 'vuex'
 import BoardMotifyForm from '../../../components/board/community/BoardMotifyForm.vue'
 export default {
   components: { BoardMotifyForm },
-
     name:'BoardModify',
-
-
     props: {
         boardNo: {
             type: String,
@@ -27,15 +23,11 @@ export default {
     computed: {
         ...mapState(['board'])
     },
-
     methods: {
         ...mapActions(['fetchBoard']),
-
         onSubmit (payload) {
             const { title, content,writer, file, fileName} = payload
-
             let formData = new FormData()
-
             if (file != null ){formData.append('file', file)}
             formData.append('title',title)
             formData.append('content', content)
@@ -48,7 +40,7 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }})
                     .then(res => {
-                        alert('게시물 수정 성공!')
+                        alert('Successfully submitted')
                         this.$router.push({
                             name: 'BoardRead',
                             params: { boardNo: res.data.boardNo.toString() }

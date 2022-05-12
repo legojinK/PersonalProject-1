@@ -13,7 +13,8 @@
         label="Search"
         single-line
         hide-details
-        class="shrink pr-15">
+        class="shrink pr-15"
+        color="#e3c832">
       </v-text-field>
       
 
@@ -31,7 +32,13 @@
       class="table"
       hide-default-footer
       @page-count="pageCount = $event"
-    ></v-data-table>
+    >
+
+    <template v-slot:[`item.title`]="{ item }">
+                    {{ item.title }} <span style="color:#D50000;"> [{{ item.comments.length }}] </span>
+               
+    </template>
+</v-data-table>
 
     <div class="text-center pt-2">
       <v-pagination class="grey lighten-4"
@@ -67,7 +74,7 @@ export default {
         {text:'글 번호', align: 'center', value: 'boardNo', width:'10%'}, 
         {text: '제목', align: 'center', value: 'title', width: "60%"},
         {text: '작성자', align: 'center',value: 'writer', width:'15%'},
-        {text: '등록일자',align: 'center', value: 'regDate',width:'15%'},
+        {text: '등록일자',align: 'center', value: 'updDate',width:'15%'},
       ],
     }
   },
@@ -76,38 +83,34 @@ export default {
       console.log("글 번호: " + idx.item.boardNo)
       this.$router.push({name: 'BoardRead', params: {boardNo: String(idx.item.boardNo)}})
     },
-    /*
-    @click="keySearch"
-    keySearch(){
-      const {keyWord} = this
-      console.log(keyWord)
-      axios.post('http://localhost:7777/board/community/search', {keyWord})
-      .then((res) => {
-          console.log(res.data)
-          this.$router.push({name: 'CommunityBoardSearchPage', params: { searchList: res.data }})
-      })
-      .catch (() => {
-          alert('문제 발생!')
-      })
-            }*/
-  }
+
+  },
+   created() {
+    if (this.$store.state.session != null) {
+      this.loginAuth = this.$store.state.auth.auth
+    } else {
+      alert("please login");
+      this.$router.push("/Home");
+    }
+  },
 }
 </script>
 
 <style scoped>
 
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Poiret+One&family=Sunflower:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Poiret+One&family=Sunflower:wght@300&family=Ubuntu:wght@300&display=swap");
 
 
 .table{
   cursor: pointer;
+  font-family: 'Ubuntu', sans-serif;
+
 
 }
 
 .cardStyle{
 
-  font-family: 'Poiret One', cursive;
-  font-weight: bold;
+  font-family: 'Ubuntu',  sans-serif;
   margin: 30px;
   width:90%;
 }

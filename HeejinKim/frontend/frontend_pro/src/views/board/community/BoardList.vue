@@ -22,7 +22,6 @@ export default {
     },
     methods: {
         ...mapActions(['fetchBoardList']),
-
         writeBoard(){
             this.$router.push('/community/register')
         }
@@ -32,12 +31,10 @@ export default {
 </script>
 
 <style scoped>
-
 .writeBtn{
   margin-top:30px;
   left:90%;
   height:40px;
   width:40px;    
 }
-
 </style>

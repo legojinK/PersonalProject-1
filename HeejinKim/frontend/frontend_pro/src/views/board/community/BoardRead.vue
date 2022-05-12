@@ -15,9 +15,7 @@
 import BoardReadForm from '@/components/board/community/BoardReadForm.vue' 
 import BoardCommentForm from '@/components/board/community/BoardCommentForm.vue'
 import axios from 'axios'
-
 import { mapActions, mapState } from 'vuex'
-
 export default {
     name:'BoardRead',
    
@@ -33,7 +31,6 @@ export default {
     computed: {
         ...mapState(['board','boardComments'])
     },
-
     components: {  
        BoardReadForm,
        BoardCommentForm
@@ -49,15 +46,12 @@ export default {
     
     methods: {
         ...mapActions(['fetchBoard','fetchBoardCommentsList']),
-
         onSubmit (payload) {
-
             const { comment, commentWriter } = payload
             const boardNo = this.boardNo
-
             axios.post(`http://localhost:7777/boardComments/register/${boardNo}`, { commentWriter, comment })
                 .then(() => {
-                    alert('댓글 등록')
+                    alert('Successfully submitted')
                     this.$router.push('/communityBoard')
                 })
                 .catch(() => {

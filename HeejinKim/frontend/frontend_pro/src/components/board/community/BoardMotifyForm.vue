@@ -5,7 +5,7 @@
                     <v-row justify="center">
                         <v-col cols="1" class="label mt-5 ml-4" >Title</v-col>
                         <v-col>
-                            <v-text-field  type="text" v-model="title"/>
+                            <v-text-field color="#e3c832" type="text" v-model="title"/>
                         </v-col>
                     </v-row>
 
@@ -29,7 +29,7 @@
                         </v-col>
 
                         <v-col cols="12">
-                        <v-img :src="image" alt=""/>
+                        <v-img :src="image" class="addImg" alt=""/>
                         </v-col>
                     </v-row>
 
@@ -37,7 +37,7 @@
                      <v-row wrap>
                             <router-link :to="{ name: 'BoardRead',
                                 params: { boardNo: board.boardNo.toString() } }" style=" text-decoration:none"><v-btn color="grey" dark >cancle</v-btn></router-link>
-                        <v-btn type="submit" color="black" dark>Modify</v-btn>
+                        <v-btn type="submit" color="black" class="submitBtn" dark>Modify</v-btn>
                     </v-row>
                 </table>
             </v-form>
@@ -46,9 +46,7 @@
 
 <script>
 export default {
-
     name:'BoardModifyForm',
-
     props: {
         board: {
             type: Object,
@@ -59,25 +57,21 @@ export default {
         return {
             title: '',
             content: '',
-            image :'',               
+            image :'',  
+            file:''             
         }
     },
     methods: {
         handleFileUpload () {
            console.log('add Image')
-
             var image = this.$refs['files'].files[0]
-
             const url = URL.createObjectURL(image)
             this.image = url
-
             this.files = this.$refs.files.files[0]
         },
-
         onSubmit () {
             const { title, content, writer, fileName } = this
             const file =  this.$refs.files.files[0]
-
             this.$emit('submit', { title, content, writer, file,fileName })
         },
     },
@@ -92,23 +86,18 @@ export default {
             this.files = '',
             this.image = ''
         },       
-
 }
 </script>
 
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
-
 .label{
-
     font-size: 20pt;
     margin-right:5%;
     text-align: center;
     font-family: 'Poiret One', cursive;
 }
 table{ 
-
     background-color: #f3f3f3;;
     padding: 5% 10% 5% 10%;
     margin-left:auto;
@@ -116,14 +105,22 @@ table{
       
 }
 .imageDeleteBtn{
-
     zoom:0.8;
     margin-left:3%;
     
+}
+.submitBtn{
+margin-left:33%;
 }
    
 .v-text-field, .v-textarea, #files{
     font-family: 'Noto Sans KR', sans-serif;
 }
-
+.addImg {
+    position: relative;
+    margin-left: auto;
+    margin-right:auto;
+    max-width: 400px;
+    max-height: 600px;
+}
 </style>

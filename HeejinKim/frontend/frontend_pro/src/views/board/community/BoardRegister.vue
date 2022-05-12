@@ -7,15 +7,10 @@
 </template>
 
 <script>
-
 import axios from 'axios'
 import BoardRegisterForm from '@/components/board/community/BoardRegisterForm.vue'
-
-
 export default {
-
     name: 'BoardRegister',
-
     components: { 
         BoardRegisterForm
     },
@@ -23,7 +18,6 @@ export default {
     methods: {
         onSubmit (payload) {
             const { title, content, writer,file} = payload
-
             let formData = new FormData()
             if (file != null )
             {formData.append('file', file)}
@@ -31,12 +25,11 @@ export default {
             formData.append('content', content)
             formData.append('writer', writer)
            
-
             axios.post(`http://localhost:7777/board/community/register`,formData, { headers: {
                     'Content-Type': 'multipart/form-data'
                 }})
                     .then(() => {
-                        alert('게시물 등록 성공!')
+                        alert("Successfully submitted")
                         this.$router.push({
                             name: 'BoardList'
                         })

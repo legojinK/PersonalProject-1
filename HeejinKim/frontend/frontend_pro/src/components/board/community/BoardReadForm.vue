@@ -18,7 +18,7 @@
             <v-row>
                 <v-col cols="1" class="label"> Date</v-col>
                 <v-col>
-                    <v-text-field class="date" rounded readonly :value="board.regDate"/>
+                    <v-text-field class="date" rounded readonly :value="board.updDate"/>
                 </v-col>
             </v-row>
 
@@ -37,16 +37,19 @@
             </v-row>
             
             <v-row>
-                <v-btn @click="backPage" class="backBtn" dark> Back</v-btn>
-            </v-row>
+                <v-btn @click="backPage" text class="backBtn" >
+                    <v-icon class="listIcon" justify="center"> mdi-keyboard-backspace</v-icon>
+                    </v-btn>
+            
 
-            <v-row v-if="board.writer == this.userId">  
+            <span v-if="board.writer == this.userId">  
     
                 <router-link :to="{name:'BoardModify', params:{boardNo: board.boardNo.toString()}}" style="text-decoration:none">
                     <v-btn class="modifyBtn">Modify</v-btn>
                 </router-link>
         
-                <v-btn @click=onDelete dark>Delete</v-btn>
+                <v-btn @click=onDelete class="deleteBtn" text><v-icon class="deleteIcon" color="red"> mdi-trash-can-outline </v-icon></v-btn>
+            </span>
 
             </v-row>
 
@@ -89,7 +92,7 @@ export default {
             
             axios.delete(`http://localhost:7777/board/community/${boardNo}`, {fileName})
                     .then(() => {
-                        alert('게시글 삭제')
+                       alert("Done! Files deleted successfully");
                         this.$router.push({ name: 'BoardList' })
                     })
                     .catch(() => {
@@ -102,16 +105,13 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Poiret+One&family=Sunflower:wght@300&family=Ubuntu:wght@300&display=swap");
-
 .label{
-
     font-family: 'Ubuntu', sans-serif; 
     font-size: 17pt;
     margin-right:5%;
     text-align: center;
     padding-top: 25px; 
 }
-
 table{
     background-color: #f3f3f3;
     padding: 5% 10% 5% 10%;
@@ -119,7 +119,9 @@ table{
     margin-right:auto;
 }
 .modifyBtn{
-    color:rgba(214, 86, 103, 0.596);  
+   color:#e3c832; 
+    margin-left:210px;
+
 }
 .v-text-field, .v-textarea{
     font-family: 'Sunflower', sans-serif;
@@ -128,7 +130,10 @@ table{
     position: relative;
     max-height: 400px;
     max-width: 500px;
+    margin-bottom:20px;
 }
-
+.deleteBtn{
+    margin-left:200px;
+}
 </style>
     
