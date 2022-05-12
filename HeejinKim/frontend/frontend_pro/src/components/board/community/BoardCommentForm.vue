@@ -9,7 +9,7 @@
                         style="white-space:pre-line" v-model="comment"/>
                     </v-col>
                     
-                    <v-btn  type="submit" class="commentBtn" dark>register</v-btn>
+                    <v-btn  type="submit" class="commentBtn" text><v-icon class="deleteIcon" color="#e3c832"> mdi-arrow-right </v-icon></v-btn>
                     
                 </v-row>
 
@@ -27,9 +27,9 @@
                         </v-col>
                         
                     <template v-if="comments.commentWriter == commentWriter">
-                                <v-btn class="comRemoveBtn" @click=comRemove(comments.commentNo) small >
+                                <v-btn class="comRemoveBtn" @click=comRemove(comments.commentNo) small text>
                                 <v-icon>
-                                    mdi-delete
+                                   mdi-trash-can-outline
                                 </v-icon>
                             </v-btn>
                     </template>
@@ -83,13 +83,10 @@ export default {
             console.log(comment, commentWriter)
         },
         comRemove (commentNo) {
-
-            //const { commentNo } = payload
             
-      
-            axios.delete(`http://localhost:7777/boardComments/${commentNo}`,{commentNo})
+            axios.delete(`http://localhost:7777/boardComments/${commentNo}`)
                     .then(() => {
-                        alert('댓글 삭제.')
+                        alert("Done! Deleted successfully");
                         this.$router.push('/communityBoard')
                     })
                     .catch(() => {
@@ -102,17 +99,14 @@ export default {
 }
 </script>
 <style scoped>
-
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Poiret+One&family=Sunflower:wght@300&family=Ubuntu:wght@300&display=swap");
 .label{
-
     font-family: 'Ubuntu', sans-serif; 
     font-size: 15pt;
     margin-right:5%;
     text-align: center;
     padding-top: 25px; 
 }
-
 table{
     background-color: #f8f8f8;
     padding: 5% 10% 5% 10%;
@@ -120,7 +114,6 @@ table{
     margin-right:auto;
     width: 855px;
 }
-
 .v-text-field, .v-textarea{
     font-family: 'Sunflower', sans-serif;
 }
@@ -130,6 +123,4 @@ table{
 .commentBtn{
       margin-top: 6%;
 }
-
-
 </style>
