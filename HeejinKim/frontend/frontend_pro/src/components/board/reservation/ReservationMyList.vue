@@ -57,7 +57,7 @@
         headers: [
         {text:'ReservationNo', align: 'center', value: 'reservationNo', width:'10%'}, 
         {text:'SeatNumber', align: 'center', value: 'seatNumber', width:'10%'}, 
-        {text: 'Date',align: 'center', value: 'regDate',width:'15%'},
+        {text: 'Date',align: 'center', value: 'picker',width:'15%'},
         ],
         }
       }, 

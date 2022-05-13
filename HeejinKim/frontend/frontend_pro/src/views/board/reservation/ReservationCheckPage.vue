@@ -52,20 +52,7 @@ export default {
    
     methods: {
             ...mapActions(['fetchReservationIdLists','fetchReservation']),
-/*
-      getReadBooking() {
 
-      const reservationNo = this.reservationNo
-    
-      axios.get(`http://localhost:7777/reservation/checkBooking/${reservationNo}`)
-        .then( res => {
-          if(res.data){
-            console.log(res.data)
-            console.log(reservationNo)
-          }
-        })
-        .catch(() => {  alert('읽기 실패') })    
-      }*/
     }
 }
       

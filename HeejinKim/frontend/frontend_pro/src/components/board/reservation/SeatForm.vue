@@ -1,21 +1,18 @@
 <template>
 
-  <v-container class="place" justify="center">
-   
+  <v-container justify="center">
+    <v-card class="place">
       
     <v-row justify="center">
-      <v-col cols="8" class="label" style="font-size:20pt">Libarary seat booking</v-col>            
+      <v-col cols="12" class="label">Libarary seat</v-col>            
     </v-row>
 
-     <v-row>
-      <v-col >
-        <div class="llabel"> userId : {{this.id}}  </div>
-       
-      </v-col>
-    </v-row>
-       
-    
-
+       <v-row justify="center">
+          <v-date-picker v-model="picker" @dblclick:date="dblClick" color="grey lighten-2" width="310px"
+           :landscape="landscape" class="date" :min="new Date().toISOString().substr(0, 10)"></v-date-picker>
+        </v-row>
+   
+      
     <v-row justify="center">
       <v-col>
         <ul class="showcase">
@@ -36,6 +33,7 @@
         </ul>
       </v-col>
     </v-row>
+  
 
     <v-row>
       <v-col v-model="seatNumber">
@@ -46,7 +44,8 @@
        
     <v-row justify="center">
       <v-col>
-        <table class="container">
+        <table class="container1">
+          
           <tbody>
             <tr v-for="(i, idx) in seatRows" :key="idx">
               <td v-for="(j, idx) in seatCols" :key="idx" >
@@ -59,17 +58,18 @@
               </td>
             </tr>
           </tbody>
+   
         </table>
        
       </v-col>
     </v-row> 
 
     <v-row>    
-      <router-link :to="{ name: 'ReservationPage',params: { seatNumber,id } }"  style=" text-decoration:none">
+      <router-link :to="{ name: 'ReservationPage',params: { picker,seatNumber,id } }"  style=" text-decoration:none">
         <v-btn class="selectSeatBtn" dark> select </v-btn>
       </router-link>  
     </v-row>    
-
+      </v-card>
   </v-container>
 </template>
 
@@ -83,15 +83,14 @@ export default {
 
   data() {
     return {
-      seatNumber:'',
-      
+      seatNumber:[],
+      picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       blackseat:[],    
       seatRows: 3,
       seatCols: 7,
       reservation:'',
-      //reservations:[],
       apblist:['','A','B','C','D','E','F','G','H'],
-      //이거 추가
+      landscape: true,
       
     }
   }, 
@@ -102,14 +101,15 @@ export default {
   },
   created(){
     this.id=this.$store.state.session.userId;
-     setTimeout(this.getSeatsInfo, 1000);
+     setTimeout(this.dblClick, 1000);
       //this.reservation = this.$store.state.reservations[0]
   },
   mounted(){
+    
       if (this.$store.state.session != null) {
       this.loginAuth = this.$store.state.auth.auth
     } else {
-      alert("please login.");
+      alert("please login");
       this.$router.push("/Home");
     }
   },
@@ -131,22 +131,29 @@ export default {
        
       }
 
-      
-      //this.$store.state.reservation.seatNumber = this.seatNumber
     },
-    getSeatsInfo() {
-    
-     axios.get(`http://localhost:7777/reservation/reservationList`)
+    dblClick() {
+      if (this.$store.state.reservations !== "" || this.$store.state.reservations == "" ){
+        for(let i = 0; i < this.$store.state.reservations.length ; i++){
+
+          var mm = this.$store.state.reservations[i].seatNumber
+          document.getElementById(mm).style = "background:rgba(128, 128, 128, 0.199)"
+          var target =document.getElementById(mm)
+
+          target.disabled = false
+        }
+      }
+    const{picker}=this
+     axios.get(`http://localhost:7777/reservation/reservationList/${picker}`)
         .then( res => {
 
-          console.log(res.data.length)
           console.log(res.data)
           var length = res.data.length
 
           for(let j = 0; j < length ; j++){
 
             console.log(j)
-
+            
             var nn = res.data[j].seatNumber
 
             document.getElementById(nn).style = "background:black"
@@ -155,9 +162,12 @@ export default {
             //선택된 좌석 비활성화
 
             var target = document.getElementById(nn)
-            target.disabled = true;              
-           }
-           this.$store.state.reservations = res.data
+            
+            target.disabled = true
+
+
+          }
+          this.$store.state.reservations = res.data
           
         })
         .catch(function (error) {
@@ -176,6 +186,7 @@ export default {
 <style scoped>
 
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Poiret+One&family=Sunflower:wght@300&family=Ubuntu:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Arvo");
 
 
 .llabel{
@@ -184,16 +195,19 @@ export default {
   margin-right:5%;
   text-align: center;
   padding-top: 50px; 
+  
 }
 .label{
   font-family: 'Poiret One', cursive;
-  font-size: 20pt;
+  font-size: 55px;
+  font-weight: 400;
   margin-right:5%;
   text-align: center;
-  padding-top: 25px; 
-  font-weight:bold;
+  padding-top: 25px;
+  color:#d1a908;  
 
 }
+
 .place{
     background-color: #f8f8f8;
     padding: 5% 10% 5% 10%;
@@ -203,9 +217,15 @@ export default {
     margin-bottom:30px;
     width: 700px;
 }
-.container {
+.date{
+  margin-right: 14%;
+  margin-top: 20%;
+  margin-bottom: 10%;
+
+}
+.container1 {
   
-  padding: 5% 10% 5% 10%;
+  padding: 5% 7% 5% 5%;
   border-collapse: separate;
   
   
@@ -311,3 +331,4 @@ export default {
 }
 
 </style>
+
