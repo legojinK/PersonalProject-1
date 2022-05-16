@@ -29,8 +29,8 @@ public class Reservation {
     @Column(length = 32, nullable = false)
     private String id;
 
-    //@Column
-    //private String seatTime;
+    @Column
+    private String picker;
 
     @Column
     private String seatNumber;
@@ -40,15 +40,15 @@ public class Reservation {
     private Date regDate;
 
     @JsonIgnore
-    //@JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "member_no")
     private Member member;
 
 
-    public Reservation ( String id,String seatNumber,Member tableMember){
+    public Reservation ( String id,String seatNumber,String picker,Member tableMember){
         this.id = id;
         this.seatNumber = seatNumber;
+        this.picker = picker;
         member = tableMember;
 
     }

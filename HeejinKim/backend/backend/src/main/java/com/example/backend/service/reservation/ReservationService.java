@@ -13,12 +13,13 @@ public interface ReservationService {
     //Id 넣으면 조회 가능하게
     //예매내역 추가하기
 
-    public List<Reservation> list ();
+    //백업용 public List<Reservation> list ();
+    public List<Reservation> list (String picker);
     public void rsvRegister (Reservation reservation);          //내역 추가하기
     public Reservation getBookingRead (Long reservationNo);     //Id 넣으면 조회 가능하게---예약번호넣으면 조회가능하게
     public void updateModify (Reservation reservation);         //업데이트 된 내용을 넣기
     public void remove (Long reservationNo) ;                   //삭제기능
-    public Reservation getRestSeats (String seatTime);          //시간으로 남은자리 찾기
+    //public Reservation getRestSeats (String seatTime);          //시간으로 남은자리 찾기
     public List<Reservation> searchIdList(String searchId);
     public Reservation read (Long checkReservationNo,String searchId);
 

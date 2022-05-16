@@ -32,10 +32,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     @Query(value = "select * from reservation where seat_number = :seatNumber", nativeQuery = true)
     Optional<Reservation> findBySeatNumber(Long seatNumber);
 
+
     //시간으로 예약 다 가져오기
     @Transactional
-    @Query(value = "select * from reservation where seat_time = :seatTime", nativeQuery = true)
-    Optional <Reservation> findRestSeatsByTime(String seatTime);
+    @Query(value = "select * from reservation where picker = :picker", nativeQuery = true)
+    public List <Reservation> findByPicker(String picker);
 
 
     @Transactional
