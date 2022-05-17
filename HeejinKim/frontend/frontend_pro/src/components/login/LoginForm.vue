@@ -1,5 +1,5 @@
 <template>
-   <div>
+   
         <v-dialog v-model="login_dialog" max-width="350">
             <template v-slot:activator="{ on, attrs }"> 
                 <v-btn text color="black" class="btn-flat" v-on="on" v-bind="attrs">Login
@@ -14,7 +14,7 @@
                             <div class="input" justify-center>
                                 
                                 <div class="input_area">
-                                <v-text-field class="pl-4 pr-4" flat solo v-model="userId" type="text" label="userId" :rules="rulesId"> 
+                                <v-text-field class="pl-4 pr-4" flat solo v-model="userId" type="text" label="Id" :rules="rulesId"> 
                                 </v-text-field></div>
 
                                 <div class="input_area">
@@ -22,7 +22,7 @@
                                 :rules="rulesPassword"> </v-text-field></div>
 
                                 <div class="forgot_pw pt-5 " >
-                                    <h5> FORGOT PASSWORD?</h5>
+                                    <v-btn text @click="goFind()"> FORGOT PASSWORD?</v-btn>
                                 </div>
 
                                 <div class="btn-size pt-2">
@@ -37,7 +37,7 @@
                 </v-container>
             </v-card>
         </v-dialog>
-   </div>
+   
 </template>
 
 <script>
@@ -72,6 +72,11 @@ export default {
             const { userId, password} = this
                      
             this.$emit('submit', { userId, password})
+        },
+        goFind(){
+            
+            this.$router.push('/searchPw')
+            this.login_dialog = false
         }
 
     }
