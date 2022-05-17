@@ -1,5 +1,6 @@
 package com.example.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
@@ -30,7 +31,7 @@ public class Member {
     @Column(length = 64, nullable = false)
     private String password;
 
-    @Column(length = 64, nullable = false)
+    @Column(length = 64)
     private String passwordCheck;
 
     @Column(length = 64, nullable = false)
@@ -39,6 +40,7 @@ public class Member {
     @Column(length = 64)
     private String auth;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     @CreationTimestamp
     private Date regDate;
 
@@ -46,16 +48,17 @@ public class Member {
     private Date updDate;
 
     @Fetch(value = FetchMode.SUBSELECT)// 이것을 해야 Json 오류가 안생김
-    @JsonManagedReference
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
+    @JoinColumn(name = "member_no")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MemberAuth> authList = new ArrayList();
 
+
     @Fetch(value = FetchMode.SUBSELECT)
-    //@JsonManagedReference
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
     private List<Reservation> reservation = new ArrayList<>();
 
-    public Member (String userId, String password, String passwordCheck, String email) {
+    public Member (Long memberNo,String userId, String password, String passwordCheck, String email) {
+        this.memberNo=memberNo;
         this.userId = userId;
         this.password = password;
         this.passwordCheck = passwordCheck;
@@ -85,7 +88,7 @@ public class Member {
 
     public void addAuth (MemberAuth auth) {
         if (authList == null) {
-            authList = new ArrayList();
+            authList = new ArrayList <MemberAuth>();
         }
 
         authList.add(auth);
