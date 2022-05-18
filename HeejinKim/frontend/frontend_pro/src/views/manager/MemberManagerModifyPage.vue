@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <member-manager-modify-form
-      v-if="registerMember && registerMemberAuth"
-      :registerMember="registerMember"
-      :registerMemberAuth="registerMemberAuth"
-      @submit="onSubmit"
-    />
-  </div>
+  <v-container>
+    <v-row>
+      <member-manager-modify-form v-if="registerMember && registerMemberAuth" 
+        :registerMember="registerMember" :registerMemberAuth="registerMemberAuth"
+        @submit="onSubmit"/>     
+    </v-row>
+  </v-container> 
 </template>
 
 <script>
@@ -44,18 +43,18 @@ export default {
         })
         .catch(() => {
           alert("수정 실패")
-        });
+        })
     },
   },
   created() {
     this.fetchRegisterMember(this.memberNo).catch(() => {
       alert("조회 실패")
       this.$router.back()
-    });
+    })
     this.fetchRegisterMemberAuth(this.memberNo).catch(() => {
       alert("조회 실패")
       this.$router.back()
-    });
+    })
   },
-};
+}
 </script>

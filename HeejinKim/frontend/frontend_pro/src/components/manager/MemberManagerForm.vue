@@ -60,7 +60,7 @@
                   :to="{ name: 'MemberManagerModifyPage', params: { memberNo: member.memberNo.toString() }, }">
                     <v-icon class="deleteIcon" color="red"> mdi-account-cog </v-icon></v-btn>
                       
-                         <v-overlay :value="overlay"></v-overlay>
+                        
                 </td>
 
                 
@@ -99,17 +99,10 @@ export default {
       pageCount: 0,
       itemsPerPage: 5,
         switch1: true,
-         overlay: false,
         
     }
   },
-  watch: {
-      overlay (val) {
-        val && setTimeout(() => {
-          this.overlay = false
-        }, 2000)
-      },
-    },
+  
   
 }
 </script>

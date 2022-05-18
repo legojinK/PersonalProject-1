@@ -5,26 +5,34 @@ import {
     FETCH_AUTH,
     FETCH_AUTH_LIST,
    
-
+    //커뮤니티 게시판
     FETCH_BOARD,
     FETCH_BOARD_LIST,
-
     FETCH_BOARD_COMMENTS_LIST,
+    FETCH_BOARD_ID_LISTS,
 
+    //서비스센터 게시판
+
+    FETCH_CENTER_COMMENTS_LIST,
+    FETCH_CENTER,
+    FETCH_CENTER_LIST,
+    FETCH_CENTER_ID_LISTS,
+
+    //예약 게시판
     FETCH_RESERVATION,
     FETCH_RESERVATION_LIST,
+    FETCH_RESERVATION_ID_LISTS, 
 
-    FETCH_RESERVATION_ID_LISTS 
+    //공지사항게시판
+    FETCH_NOTICE_BOARD_LIST,
+    FETCH_NOTICE_BOARD,
 
+    FETCH_REGISTER_MEMBERS,
+    FETCH_REGISTER_MEMBER,
+    FETCH_REGISTER_MEMBER_AUTHS,
+    FETCH_REGISTER_MEMBER_AUTH,
+    
 
-/*
-    COOKIE_SESSION,
-    REMOVE_IS_LOGIN,
-    REMOVE_SESSION,
-    SET_IS_LOGIN,
-
-    SET_MEMBER_NO,
-    SET_AUTH*/
 
 
 }from './mutation-types'
@@ -39,6 +47,23 @@ export default {
     },
     [FETCH_BOARD_COMMENTS_LIST] (state, boardComments) {
         state.boardComments = boardComments
+    },
+    [FETCH_BOARD_ID_LISTS] (state, boardIdLists) {
+        state.boardIdLists = boardIdLists
+    },
+
+    
+    [FETCH_CENTER_LIST] (state,centers) {
+        state.centers = centers;
+    },
+    [FETCH_CENTER] (state, center) {
+        state.center = center
+    },
+    [FETCH_CENTER_COMMENTS_LIST] (state, centerComments) {
+        state.centerComments = centerComments
+    },
+    [FETCH_CENTER_ID_LISTS] (state, centerIdLists) {
+        state.centerIdLists = centerIdLists
     },
 
 
@@ -67,26 +92,26 @@ export default {
     [FETCH_RESERVATION_ID_LISTS] (state, reservationIdLists) {
         state.reservationIdLists = reservationIdLists
     },
-  
 
-/*
-    [COOKIE_SESSION](state, payload) {
-        state.session = payload;
+    [FETCH_NOTICE_BOARD_LIST](state, noticeBoards){
+        state.noticeBoards = noticeBoards
     },
-    [SET_IS_LOGIN](state, payload) {
-    state.isLogin = payload;
+    [FETCH_NOTICE_BOARD](state, noticeBoard){
+        state.noticeBoard = noticeBoard
     },
-    [SET_MEMBER_NO](state, payload) {
-    state.loginMemberNo = payload;
+
+    [FETCH_REGISTER_MEMBERS](state, registerMembers){
+        state.registerMembers = registerMembers
     },
-    [REMOVE_SESSION](state, payload) {
-    state.session = payload;
+    [FETCH_REGISTER_MEMBER_AUTHS](state, registerMemberAuths){
+        state.registerMemberAuths = registerMemberAuths
     },
-    [SET_AUTH](state, payload) {
-    state.auth = payload;
+    [FETCH_REGISTER_MEMBER](state, registerMember){
+        state.registerMember = registerMember
     },
-    [REMOVE_IS_LOGIN](state, payload) {
-    state.isLogin = payload;
-    }*/
-  
+    [FETCH_REGISTER_MEMBER_AUTH](state, registerMemberAuth){
+        state.registerMemberAuth = registerMemberAuth
+    },
+
+
 }
