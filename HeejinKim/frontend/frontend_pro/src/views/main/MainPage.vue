@@ -5,14 +5,14 @@
                
                 <v-window-item :value="1">
                     <v-card >
-                        <v-img src="@/assets/picture/mainimg.png" height="950">
+                        <v-img  class="mainimg" src="@/assets/picture/mainimg.png" height="1100">
 
                             <v-row class="fill-height pa-4" align="center">
                                 
                                 <v-col cols="12" md="7" offset-md="1">
-                                    <h1 class="display-2 mb-30 font-weight-light white--text">Warm, Tranquil Living</h1>
+                                    <h1 class="title11 ">Warm, Tranquil Living</h1>
 
-                                    <div class="pl-2 mt-2 white--text">
+                                    <div class="title22">
                                         relax your life
                                     </div>
                                     
@@ -23,6 +23,8 @@
                 </v-window-item>
             </v-window>
         </v-container>
+        
+        
 
         <div class="contents">
             <h1>Welcome home</h1>
@@ -36,21 +38,26 @@
                 <h3>Warm, Tranquil Living</h3>
                 </div>
             <div class="bottom">
-                <p> 아름다운 실내에서 <br>
-                행복한 라이프를 즐기세요 </p>
+                <p>  
+                Eastlight offers a sense of serenity <br>
+                that is balanced by the distinctive <br>
+                urban energy outside its doors.<br>
+                </p>
             </div>
             <v-img src="@/assets/picture/aptinner.jpg" height="700"></v-img>
         </div>
         <p></p>
         <div class="screen2">
             <div class="top2" >
-                <h3>Warm, Tranquil Living</h3>
+                <h3>A Graceful Retreat</h3>
                 </div>
             <div class="bottom2">
-                <p> 아름다운 실내에서 <br>
-                행복한 라이프를 즐기세요 </p>
+                <p>  Sophisticated modern interiors are rich <br>
+                in materiality and provide <br>
+                an oasis of calm in the heart of <br>
+                the world’s most inspiring city. </p>
             </div>
-            <v-img src="@/assets/picture/kids.png" height="700"></v-img>
+            <v-img src="@/assets/picture/aptinner2.jpg" height="700"></v-img>
         </div>
     <!--
             <v-sheet class="mt-5 mb-10">
@@ -60,8 +67,9 @@
                     </v-col>
                 </v-row>
             </v-sheet>  -->
-    <weather></weather>
-    <br><br>
+            <main-pic></main-pic>
+    <weather></weather>  
+
     
     </body>
     
@@ -72,6 +80,7 @@
 <script>
 
 import Weather from '@/components/main/Weather.vue'
+import MainPic from '@/views/main/MainPic.vue'
 //import FooterForm from '@/components/main/FooterForm.vue'
 
 
@@ -83,6 +92,7 @@ export default {
   components:
 
     {   Weather,
+    MainPic
         //FooterForm 
     },
    
@@ -119,8 +129,49 @@ export default {
     margin: 5% 0% 5% 0%;
     padding: 5px 0px 5px 0px;
 }
+.mainimg::before{
+    transform: translate(0px, 0px);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 130px);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.mainimg::after {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: scale(1.2);
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
+}
+.screen:hover::after{
+    opacity: 1;
+}
 
+.title11{
+    font-family: 'Poiret One', cursive;
+    color:whitesmoke;
+    font-weight: lighter;
+    font-size:40pt;
+
+}
+.title22{
+    font-family: 'Poiret One', cursive;
+    color:whitesmoke;
+    font-weight: 500;
+    font-size:15pt;
+    margin-left: 2%;
+
+}
 
 .screen{
     position: relative;
@@ -130,17 +181,17 @@ export default {
     font-family: 'Poiret One', cursive;
     position:absolute;
     bottom:150%;
-    left:30px;
+    left:50px;
     z-index: 2;
     color:white;
     font-size: 30px;
     transition: all .35s;    
 }
 .bottom{
-    
+    font-family: 'Poiret One', cursive;
     position:absolute;
     top:150%;
-    left:30px;
+    left:70px;
     z-index: 2;
     color:white;
     font-size: 20px;
@@ -176,16 +227,17 @@ export default {
     font-family: 'Poiret One', cursive;
     position:absolute;
     bottom:150%;
-    right:30px;
+    right:70px;
     z-index: 2;
     color:white;
     font-size: 30px;
     transition: all .35s;    
 }
 .bottom2{   
+    font-family: 'Poiret One', cursive;
     position:absolute;
     top:150%;
-    right:30px;
+    right:50px;
     z-index: 2;
     color:white;
     font-size: 20px;
