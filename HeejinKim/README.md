@@ -1,6 +1,4 @@
 ## The Village
- 입주민에게는 간편하게 아파트의 편의 기능들을 사용할수 있도록 하고 
- 관리자에게는 코로나 등으로 인해 오프라인으로는 소통이 잘 안되는 것을 온라인으로 간단하게 소통하고 업무를 처리한다.
  ![슬라이드1](https://github.com/legojinK/PersonalProject-1/blob/main/HeejinKim/img/%EA%B8%B0%ED%9A%8D%EC%9D%98%EB%8F%84.png?raw=true)
  
  
