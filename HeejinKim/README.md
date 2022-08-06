@@ -1,4 +1,4 @@
-## 더 빌리지 (프로젝트)
+## The Village
  입주민에게는 간편하게 아파트의 편의 기능들을 사용할수 있도록 하고 
  관리자에게는 코로나 등으로 인해 오프라인으로는 소통이 잘 안되는 것을 온라인으로 간단하게 소통하고 업무를 처리한다.
  
@@ -16,7 +16,7 @@
    - <img src="https://img.shields.io/badge/Vuetify-2.6.0-3766AB?style=flat"/> <img src="https://img.shields.io/badge/SCSS-13.0.0-3766AB?style=flat"/>
    - <img src="https://img.shields.io/badge/eslint-7.32.0-3766AB?style=flat"/> <img src="https://img.shields.io/badge/prettier-2.6.2-3766AB?style=flat"/>
 
-## 💛팀 운영
+## 💛팀
  * ### 소스코드 관리 <img src="https://img.shields.io/badge/Github-3766AB?style=flat"/> 
  * ### 커뮤니케이션 <img src="https://img.shields.io/badge/Gather-3766AB?style=flat"/> <img src="https://img.shields.io/badge/KaKaoTalk-3766AB?style=flat"/>
  * ### 회의록 <img src="https://img.shields.io/badge/Notion-3766AB?style=flat"/>
