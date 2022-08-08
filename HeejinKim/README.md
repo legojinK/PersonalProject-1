@@ -21,10 +21,5 @@
 
 
 ## 💛 메인페이지
- ![메인페이지1](https://github.com/legojinK/PersonalProject-1/blob/main/HeejinKim/img/mainPage.com-gif-maker.gif?raw=true)
-<video width="100%" height="100%" controls="controls"> <source src="/img/메인페이지.mp4" type="video/mp4"> </video>
-
-
-![메인페이지]
-https://user-images.githubusercontent.com/95139299/183449121-e183410a-e4ab-48a7-93dc-1b232c9d83c6.mp4
+https://user-images.githubusercontent.com/95139299/183450670-07c3447b-2e2e-4110-a10e-1eac86fe5c8b.mp4
 
