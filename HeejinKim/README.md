@@ -6,9 +6,7 @@
  * ### 기술스택
    - <img src="https://img.shields.io/badge/Java-8-3766AB?style=flat"/> on <img src="https://img.shields.io/badge/IntelliJ-3766AB?style=flat"/>
    - <img src="https://img.shields.io/badge/Spring-4-3766AB?style=flat"/> <img src="https://img.shields.io/badge/SpringBoot-2.6.3-3766AB?style=flat"/> <img src="https://img.shields.io/badge/SpringSecurity-5.6.1-3766AB?style=flat"/>
-   - <img src="https://img.shields.io/badge/MySql-8.0.29-3766AB?style=flat"/> <img src="https://img.shields.io/badge/JPA-3766AB?style=flat"/>
-   - <img src="https://img.shields.io/badge/Redis-7.0.0-3766AB?style=flat"/> <img src="https://img.shields.io/badge/Docker-4.9.1-3766AB?style=flat"/>  
-   - <img src="https://img.shields.io/badge/Python-3.9.12-3766AB?style=flat"/>
+   
 ## 💛프론트 소개
  * ### 기술스택
    - <img src="https://img.shields.io/badge/JavaScript-ES6+-3766AB?style=flat"/> on <img src="https://img.shields.io/badge/VScode-3766AB?style=flat"/>
@@ -16,6 +14,6 @@
    - <img src="https://img.shields.io/badge/Vuetify-2.6.0-3766AB?style=flat"/> <img src="https://img.shields.io/badge/SCSS-13.0.0-3766AB?style=flat"/>
    - <img src="https://img.shields.io/badge/eslint-7.32.0-3766AB?style=flat"/> <img src="https://img.shields.io/badge/prettier-2.6.2-3766AB?style=flat"/>
 
-## 💛 저장소
+## 💛 DevOps
  * ### 소스코드 관리 <img src="https://img.shields.io/badge/Github-3766AB?style=flat"/> 
 ## 💛시연
