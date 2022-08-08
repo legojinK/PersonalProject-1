@@ -25,6 +25,6 @@
 <video width="100%" height="100%" controls="controls"> <source src="/img/메인페이지.mp4" type="video/mp4"> </video>
 
 
-[![메인페이지]]
+![메인페이지]
 https://user-images.githubusercontent.com/95139299/183449121-e183410a-e4ab-48a7-93dc-1b232c9d83c6.mp4
 
