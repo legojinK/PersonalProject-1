@@ -18,6 +18,8 @@
  * ### 소스코드 관리 <img src="https://img.shields.io/badge/Github-3766AB?style=flat"/> 
 ## 💛 시연
  * https://youtu.be/HARW7QBXtJE
-## 💛 
+
+
+## 💛 메인페이지
  ![메인페이지1](https://github.com/legojinK/PersonalProject-1/blob/main/HeejinKim/img/mainPage.com-gif-maker.gif?raw=true)
 
